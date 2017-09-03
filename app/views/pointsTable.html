@@ -1,0 +1,45 @@
+<form name="pointsTableForm" novalidate>
+    <div class="container">
+        <h5>Below is point table of football competition. </h5>
+        <h5>Select one to see the player details of  respective team. </h5>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Team Name</th>
+                        <th>Played</th>
+                        <th>Won</th>
+                        <th>Lost</th>
+                        <th>Draw</th>
+                        <th>Points</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="team in pointTableVM.pointsTableData">
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td> {{team.name}} </td>
+                        <td> {{team.played}} </td>
+                        <td> {{team.won}} </td>
+                        <td> {{team.lost}} </td>
+                        <td> {{team.draw}} </td>
+                        <td> {{team.points}} </td>
+                        <td>
+                            <a href ng-click="pointTableVM.viewDetails(team)" data-toggle="modal" data-target="#showDetails">
+                                View Details
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<div class="container">
+    
+    <!-- Modal -->
+    <div class="modal fade" id="showDetails" role="dialog">
+        <div ng-include="'views/teamDetails.html'"></div>
+    </div>
+</div>

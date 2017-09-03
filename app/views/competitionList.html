@@ -1,0 +1,29 @@
+<form name="competitionListForm" novalidate>
+    <div class="container">
+        <h1> Welcome to MasterMind-FootBall App </h1>
+        <h5>These are list of various football competitions. </h5>
+        <h5>Select one to see the details of respective competition. </h5>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="competition in listCompetitionVM.competitionList">
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td> {{competition.name}} </td>
+                        <td>
+                            <button type="button" ng-click="listCompetitionVM.viewDetails(competition)">
+                                View Details
+                            </button> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
