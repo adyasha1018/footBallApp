@@ -29,8 +29,19 @@ declare module masterMindApp.Controllers {
         pointsTableData: Array<any>;
         teamDetails: any;
         viewDetails: (team: any) => void;
-        static $inject: any[];
-        constructor();
+        cancel: () => void;
+        static $inject: string[];
+        constructor($mdDialog: any);
+    }
+}
+declare module masterMindApp.Controllers {
+    class TeamDetailsController {
+        pointsTableData: Array<any>;
+        teamDetails: any;
+        viewDetails: (team: any) => void;
+        cancel: () => void;
+        static $inject: string[];
+        constructor($mdDialog: any);
     }
 }
 declare module masterMindApp {

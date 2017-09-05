@@ -81,7 +81,7 @@ var masterMindApp;
     var Controllers;
     (function (Controllers) {
         var PointTableController = (function () {
-            function PointTableController() {
+            function PointTableController($mdDialog) {
                 var vm = this;
                 function init() {
                     loadPointsTableData();
@@ -96,13 +96,41 @@ var masterMindApp;
                     ];
                 }
                 function viewPlayerDetails(team) {
-                    vm.teamDetails = team;
+                    $mdDialog.show({
+                        templateUrl: 'views/teamDetails.html',
+                        controller: Controllers.TeamDetailsController,
+                        controllerAs: 'teamDetailsVM',
+                        parent: angular.element(document.body),
+                        targetEvent: team,
+                        clickOutsideToClose: true
+                    });
                 }
             }
-            PointTableController.$inject = [];
+            PointTableController.$inject = ["$mdDialog"];
             return PointTableController;
         }());
         Controllers.PointTableController = PointTableController;
+    })(Controllers = masterMindApp.Controllers || (masterMindApp.Controllers = {}));
+})(masterMindApp || (masterMindApp = {}));
+var masterMindApp;
+(function (masterMindApp) {
+    var Controllers;
+    (function (Controllers) {
+        var TeamDetailsController = (function () {
+            function TeamDetailsController($mdDialog) {
+                var vm = this;
+                function init() {
+                    vm.cancel = cancel;
+                }
+                init();
+                function cancel() {
+                    $mdDialog.cancel();
+                }
+            }
+            TeamDetailsController.$inject = ["$mdDialog"];
+            return TeamDetailsController;
+        }());
+        Controllers.TeamDetailsController = TeamDetailsController;
     })(Controllers = masterMindApp.Controllers || (masterMindApp.Controllers = {}));
 })(masterMindApp || (masterMindApp = {}));
 angular.module('masterMindApp.Controllers', []).controller(masterMindApp.Controllers);
